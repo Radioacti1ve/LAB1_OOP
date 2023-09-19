@@ -38,7 +38,7 @@ int main() {
         return 0;
     }
     int size_message = message.size();
-    for(int i = 1; i < size_message; i+=n) {
+    for(int i = n-1; i < size_message; i+=n) {
         if(message[i] == old_value) {
             message[i] = new_value;
         }
