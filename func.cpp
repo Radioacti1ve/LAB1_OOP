@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
+#include <string>
 #include "func.h"
 
-string func(int n, char old_value, char new_value, string message) {
+std::string func(int n, char old_value, char new_value, std::string message) {
     if(n <= 0)
         return message;
     int size_message = message.size();
