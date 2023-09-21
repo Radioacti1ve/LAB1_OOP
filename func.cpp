@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include "func.h"
 
 string func(int n, char old_value, char new_value, string message) {
     if(n <= 0)
