@@ -18,6 +18,7 @@
 */
 
 #include <bits/stdc++.h>
+#include "func.cpp"
 
 using namespace std;
 
@@ -31,18 +32,8 @@ int main() {
     cout << "new_value: ";
     cin >> new_value;
     string message;
-    _flushall();
+    cin.ignore();
     getline(cin, message);
-    if(n <= 0) {
-        cout<< message <<'\n';
-        return 0;
-    }
-    int size_message = message.size();
-    for(int i = n-1; i < size_message; i+=n) {
-        if(message[i] == old_value) {
-            message[i] = new_value;
-        }
-    }
-    cout << message <<'\n';
+    cout << func(n, old_value, new_value, message) <<'\n';
     return 0;
 }
