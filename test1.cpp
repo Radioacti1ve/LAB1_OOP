@@ -6,7 +6,7 @@ TEST(test_01, basic_test_set) {
     char old_value = 'a';
     char new_value = 'o';
     std::string message = "Vader said: No, I am your father!";
-    std::string answer = "Voder soid: No, I am your fother!";
+    std::string answer = "Vader soid: No, I am your fother!";
 
     ASSERT_TRUE(func(n, old_value, new_value, message)==answer);
 }
@@ -16,7 +16,7 @@ TEST(test_02, basic_test_set) {
     char old_value = 'c';
     char new_value = 'k';
     std::string message = "Hecco worlkd ccc kok lol ccc";
-    std::string answer = "Hekco worlkd ckc kok lol ckc";
+    std::string answer = "Hecco worlkd kcc kok lol kcc";
 
     ASSERT_TRUE(func(n, old_value, new_value, message)==answer);
 }
@@ -66,7 +66,7 @@ TEST(test_07, basic_test_set) {
     char old_value = 't';
     char new_value = 'j';
     std::string message = "ajsdlaslatttttttttttttttttttt";
-    std::string answer = "ajsdlaslajtttttttttjttttttttt";
+    std::string answer = "ajsdlaslatttttttttjtttttttttj";
 
     ASSERT_TRUE(func(n, old_value, new_value, message)==answer);
 }
