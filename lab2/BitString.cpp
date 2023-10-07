@@ -6,22 +6,22 @@
 
 //конструкторы
 BitString::BitString() {
-    size = 1;
+    _size = 1;
     str = new unsigned char[1];
     str[0] = '0';
 }
 
 BitString::BitString(const size_t & n, unsigned char t = 0) {
-    size = n;
-    str = new unsigned char[size];
-    for(size_t i = 0; i < size; ++i)
+    _size = n;
+    str = new unsigned char[_size];
+    for(size_t i = 0; i < _size; ++i)
         str[i] = t;
 }
 
 BitString::BitString(const std::initializer_list<unsigned char> &t) {
-    size = t.size();
-    str = new unsigned char[size];
-    size_t a = size - 1;
+    _size = t.size();
+    str = new unsigned char[_size];
+    size_t a = _size - 1;
 
     for(unsigned char elem: t) {
         if(str[elem] != '0' and str[elem] != '1') {
@@ -33,11 +33,11 @@ BitString::BitString(const std::initializer_list<unsigned char> &t) {
 }
 
 BitString::BitString(const std::string &t) {
-    size = t.size();
-    str = new unsigned char[size];
-    size_t a = size - 1;
+    _size = t.size();
+    str = new unsigned char[_size];
+    size_t a = _size - 1;
 
-    for(size_t i = 0; i < size; ++i) {
+    for(size_t i = 0; i < _size; ++i) {
         if(str[i] != '0' and str[i] != '1') {
             throw std::invalid_argument("BitString must contain only 0 or 1");
             str[a] = t[i];
@@ -46,22 +46,22 @@ BitString::BitString(const std::string &t) {
     }
 }
 
-BitString::BitString(const BitString& other) {
-    size = other.size;
-    str = new unsigned char[size];
-    for(size_t i = 0; i < size; ++i) {
+BitString::BitString(const BitString &other) {
+    _size = other._size;
+    str = new unsigned char[_size];
+    for(size_t i = 0; i < _size; ++i) {
         str[i] = other.str[i];
     }
 }
 
 BitString::BitString(BitString&& other) noexcept {
-    size = other.size;
+    _size = other._size;
     str = other.str;
 }
 
 //деструктор
 BitString::~BitString() noexcept {
-    size = 0;
+    _size = 0;
     delete[] str;
     str = nullptr;
 }
@@ -72,7 +72,7 @@ BitString::~BitString() noexcept {
 //геттеры
 
 int BitString::GetSize() {
-    return size;
+    return _size;
 }
 
 unsigned char* BitString::GetStr() {
@@ -82,7 +82,7 @@ unsigned char* BitString::GetStr() {
 int BitString::change_10() {
     change = 0;
     int base = 1;
-    for(int i = size - 1; i >= 0; --i) {
+    for(int i = _size - 1; i >= 0; --i) {
         if(str[i] == '1') {
             change += base;
         }
@@ -92,7 +92,7 @@ int BitString::change_10() {
 }
 
 //арифметические операции
-BitString BitString::plus(const BitString& other) {
+BitString BitString::plus(const BitString &other) {
     int reverse = this-> change + other.change;
     std::string result;
     while(change) {
@@ -108,7 +108,7 @@ BitString BitString::plus(const BitString& other) {
     return BitString(result); 
 }
 
-BitString BitString::minus(const BitString& other) {
+BitString BitString::minus(const BitString &other) {
     int reverse = this-> change - other.change;
     if(reverse < 0) {
         return BitString("negative number");
@@ -132,10 +132,42 @@ BitString BitString::minus(const BitString& other) {
 
 BitString BitString::copy() {
     BitString res;
-    size_t a = size - 1;
-    for(size_t i = 0; i < size; ++i) {
+    size_t a = _size - 1;
+    for(size_t i = 0; i < _size; ++i) {
         res.str[a] = str[i];
         a--;
     }
     return res;
+}
+
+//операции сравнения
+
+bool BitString::larger(const BitString &other) {
+    return this-> change > other.change;
+}
+
+bool BitString::smaller(const BitString &other) {
+    return this-> change < other.change;
+}
+
+bool BitString::equal(const BitString &other) {
+    return change == other.change;
+}
+
+//операции со битовыми строками
+
+BitString BitString::_and(const BitString &other) {
+
+}
+
+BitString BitString::_or(const BitString &other) {
+    
+}
+
+BitString BitString::_xor(const BitString &other) {
+    
+}
+
+BitString BitString::_not(const BitString) {
+    
 }

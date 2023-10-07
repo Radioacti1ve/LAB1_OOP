@@ -28,21 +28,21 @@ public:
     BitString copy();
 
     //операции сравнения
-    std::string larger(const BitString& other);
-    std::string smaller(const BitString& othre);
-    std::string equal(const BitString& other);
+    bool larger(const BitString& other);
+    bool smaller(const BitString& othre);
+    bool equal(const BitString& other);
 
 
     //операции с битовыми строками
-    std::string _and(const BitString& other);
-    std::string _or(const BitString& other);
-    std::string _xor(const BitString& other);
-    std::string _not(std::string s);
+    BitString::BitString _and(const BitString& other);
+    BitString::BitString _or(const BitString& other);
+    BitString::BitString _xor(const BitString& other);
+    BitString::BitString _not(const BitString);
 
 
 
 private:
-    size_t size;
+    size_t _size;
     unsigned char* str;
     int change;
 
