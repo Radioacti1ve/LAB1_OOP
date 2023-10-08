@@ -54,7 +54,7 @@ BitString::BitString(const BitString &other) {
     }
 }
 
-BitString::BitString(BitString&& other) noexcept {
+BitString::BitString(BitString &&   other) noexcept {
     _size = other._size;
     str = other.str;
 }
@@ -92,7 +92,7 @@ int BitString::change_10() {
 }
 
 //арифметические операции
-BitString BitString::plus(const BitString &other) {
+std::string BitString::plus(const BitString &other) {
     int reverse = this-> change + other.change;
     std::string result;
     while(change) {
@@ -104,17 +104,17 @@ BitString BitString::plus(const BitString &other) {
         
     }
     std::reverse(result.begin(), result.end());
-    
-    return BitString(result); 
+
+    return result; 
 }
 
-BitString BitString::minus(const BitString &other) {
+std::string BitString::minus(const BitString &other) {
     int reverse = this-> change - other.change;
     if(reverse < 0) {
-        return BitString("negative number");
+        return "negative number";
     }
     if(reverse == 0) {
-        return BitString("0");
+        return "0";
     }
     std::string result;
     while(change) {
@@ -126,8 +126,9 @@ BitString BitString::minus(const BitString &other) {
         
     }
     std::reverse(result.begin(), result.end());
+    std::cout<<"a - b = "<<result<<std::endl;
     
-    return BitString(result); 
+    return result; 
 }
 
 BitString BitString::copy() {
@@ -157,17 +158,59 @@ bool BitString::equal(const BitString &other) {
 //операции со битовыми строками
 
 BitString BitString::_and(const BitString &other) {
+    BitString res_and;
+    if(this-> _size != other._size) {
+        return BitString("строки имеют разную длину");
+    }
 
+    for(int i = 0; i < _size; ++i) {
+        if(str[i] == '1' and other.str[i] == '1')
+            res_and.str[i] = '1';
+        else 
+            res_and.str[i] = '0';
+    }
+    return res_and;
 }
 
 BitString BitString::_or(const BitString &other) {
-    
+    BitString res_or;
+    if(this-> _size != other._size) {
+        return BitString("строки имеют разную длину");
+    }
+
+    for(int i = 0; i < _size; ++i) {
+        if(str[i] == '0' and other.str[i] == '0')
+            res_or.str[i] = '0';
+        else 
+            res_or.str[i] = '1';
+    }
+    return res_or;
 }
 
 BitString BitString::_xor(const BitString &other) {
-    
+    BitString res_xor;
+    if(this-> _size != other._size) {
+        return BitString("строки имеют разную длину");
+    }
+
+    for(int i = 0; i < _size; ++i) {
+        if((str[i] == '0' and other.str[i] == '0') or (str[i] == '1' and other.str[i] == '1'))
+            res_xor.str[i] = '0';
+        else 
+            res_xor.str[i] = '1';
+    }
+    return res_xor;
 }
 
-BitString BitString::_not(const BitString) {
-    
+BitString BitString::_not() {
+    BitString res_not;
+    for(int i = 0; i < _size; ++i) {
+        if(str[i] == '0')
+            res_not.str[i] = '1';
+        else   
+            res_not.str[i] = '0';
+    }
+    return res_not;
 }
+
+//uraaa kanikuly rabotay pls
