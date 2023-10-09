@@ -39,17 +39,17 @@ int main() {
 
 
     //операции с битовыми строками
-    BitString tmp2 = a._and(b);
-    cout << "a and b: " << tmp2.GetStr() << endl;
+    string tmp2 = a._and(b);
+    cout << "a and b: " << tmp2 << endl;
 
-    BitString tmp3 = a._or(b);
-    cout << "a or b: " << tmp3.GetStr() << endl;
+    string tmp3 = a._or(b);
+    cout << "a or b: " << tmp3 << endl;
 
-    BitString tmp4 = a._xor(b);
-    cout << "a xor b: " << tmp4.GetStr() << endl;
+    string tmp4 = a._xor(b);
+    cout << "a xor b: " << tmp4 << endl;
 
-    BitString tmp5 = a._not();
-    cout << "not a: " << tmp5.GetStr() << endl;
+    string tmp5 = a._not();
+    cout << "not a: " << tmp5 << endl;
 
     return 0;
 }

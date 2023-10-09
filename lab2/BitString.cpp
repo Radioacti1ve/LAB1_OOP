@@ -161,61 +161,64 @@ std::string BitString::equal(const BitString &other) {
 
 //операции со битовыми строками
 
-BitString BitString::_and(const BitString &other) {
+std::string BitString::_and(const BitString &other) {
+    std::string ans;
     if(this-> _size != other._size) {
-        throw std::invalid_argument("Строки имеют разную длину");
+        ans = "Строки имеют разную длину";
+        return ans;
     }
     
-    BitString res_and(_size);
     for(int i = 0; i < _size; ++i) {
         if(str[i] == '1' and other.str[i] == '1')
-            res_and.str[i] = '1';
+            ans.push_back('1');
         else 
-            res_and.str[i] = '0';
+            ans.push_back('0');
     }
-    return res_and;
+    return ans;
     
 }
 
-BitString BitString::_or(const BitString &other) {
+std::string BitString::_or(const BitString &other) {
+    std::string ans;
     if(this-> _size != other._size) {
-        throw std::invalid_argument("Строки имеют разную длину");
+        ans = "Строки имеют разную длину";
+        return ans;
     }
 
-    BitString res_or(_size);
     for(int i = 0; i < _size; ++i) {
         if(str[i] == '0' and other.str[i] == '0')
-            res_or.str[i] = '0';
+            ans.push_back('0');
         else 
-            res_or.str[i] = '1';
+            ans.push_back('1');
     }
-    return res_or;
+    return ans;
 }
 
-BitString BitString::_xor(const BitString &other) {
+std::string BitString::_xor(const BitString &other) {
+    std::string ans;
     if(this-> _size != other._size) {
-        throw std::invalid_argument("Строки имеют разную длину");
+        ans = "Строки имеют разную длину";
+        return ans;
     }
 
-    BitString res_xor(_size);
     for(int i = 0; i < _size; ++i) {
         if((str[i] == '0' and other.str[i] == '0') or (str[i] == '1' and other.str[i] == '1'))
-            res_xor.str[i] = '0';
+            ans.push_back('0');
         else 
-            res_xor.str[i] = '1';
+            ans.push_back('1');
     }
-    return res_xor;
+    return ans;
 }
 
-BitString BitString::_not() {
-    BitString res_not;
+std::string BitString::_not() {
+    std::string s;
     for(int i = 0; i < _size; ++i) {
         if(str[i] == '0')
-            res_not.str[i] = '1';
+            s.push_back('1');
         else   
-            res_not.str[i] = '0';
+            s.push_back('0');
     }
-    return res_not;
+    return s;
 }
 
-//uraaa kanikuly rabotay pls
+//uraaa kanikuly rabotay pls    

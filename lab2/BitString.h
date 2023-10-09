@@ -34,10 +34,10 @@ public:
 
 
     //операции с битовыми строками
-    BitString  _and(const BitString &other);
-    BitString  _or(const BitString &other);
-    BitString  _xor(const BitString &other);
-    BitString  _not();
+    std::string _and(const BitString &other);
+    std::string _or(const BitString &other);
+    std::string _xor(const BitString &other);
+    std::string _not();
 
 
 
