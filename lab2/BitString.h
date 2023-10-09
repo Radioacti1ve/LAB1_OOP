@@ -7,7 +7,7 @@ class BitString {
 public:
     //кострукторы
     BitString();
-    BitString(const size_t & n, unsigned char t = 0);
+    BitString(const size_t & n);
     BitString(const std::initializer_list<unsigned char> &t);
     BitString(const std::string &t);
     BitString(const BitString &other);
@@ -25,19 +25,19 @@ public:
     int change_10();
     std::string plus(const BitString &other);
     std::string minus(const BitString &other);
-    BitString BitString::copy();
+    BitString copy();
 
     //операции сравнения
-    bool larger(const BitString &other);
-    bool smaller(const BitString &othre);
-    bool equal(const BitString &other);
+    std::string larger(const BitString &other);
+    std::string smaller(const BitString &othre);
+    std::string equal(const BitString &other);
 
 
     //операции с битовыми строками
-    BitString BitString:: _and(const BitString &other);
-    BitString BitString:: _or(const BitString &other);
-    BitString BitString:: _xor(const BitString &other);
-    BitString BitString:: _not();
+    BitString  _and(const BitString &other);
+    BitString  _or(const BitString &other);
+    BitString  _xor(const BitString &other);
+    BitString  _not();
 
 
 

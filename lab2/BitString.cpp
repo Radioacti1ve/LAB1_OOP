@@ -11,11 +11,11 @@ BitString::BitString() {
     str[0] = '0';
 }
 
-BitString::BitString(const size_t & n, unsigned char t = 0) {
+BitString::BitString(const size_t & n) {
     _size = n;
     str = new unsigned char[_size];
     for(size_t i = 0; i < _size; ++i)
-        str[i] = t;
+        str[i] = 0;
 }
 
 BitString::BitString(const std::initializer_list<unsigned char> &t) {
@@ -23,9 +23,9 @@ BitString::BitString(const std::initializer_list<unsigned char> &t) {
     str = new unsigned char[_size];
     size_t a = _size - 1;
 
-    for(unsigned char elem: t) {
+    for(int elem: t) {
         if(str[elem] != '0' and str[elem] != '1') {
-            throw std::invalid_argument("BitString must contain only 0 or 1");
+            throw std::invalid_argument("1.BitString must contain only 0 or 1");
             str[a--] = elem; 
         }
     }
@@ -35,14 +35,13 @@ BitString::BitString(const std::initializer_list<unsigned char> &t) {
 BitString::BitString(const std::string &t) {
     _size = t.size();
     str = new unsigned char[_size];
-    size_t a = _size - 1;
 
-    for(size_t i = 0; i < _size; ++i) {
-        if(str[i] != '0' and str[i] != '1') {
-            throw std::invalid_argument("BitString must contain only 0 or 1");
-            str[a] = t[i];
-            a--; 
+    for(int i = 0; i < _size; ++i) {
+        if(t[i] != '0' and t[i] != '1') {
+            delete[] str;
+            throw std::invalid_argument("2.BitString must contain only 0 or 1");
         }
+        str[i] = t[i];
     }
 }
 
@@ -95,7 +94,7 @@ int BitString::change_10() {
 std::string BitString::plus(const BitString &other) {
     int reverse = this-> change + other.change;
     std::string result;
-    while(change) {
+    while(reverse) {
         if(reverse%2 == 1)
             result.push_back('1');
         else 
@@ -117,7 +116,7 @@ std::string BitString::minus(const BitString &other) {
         return "0";
     }
     std::string result;
-    while(change) {
+    while(reverse) {
         if(reverse%2 == 1)
             result.push_back('1');
         else 
@@ -125,44 +124,49 @@ std::string BitString::minus(const BitString &other) {
         reverse /= 2;
         
     }
-    std::reverse(result.begin(), result.end());
-    std::cout<<"a - b = "<<result<<std::endl;
-    
+    std::reverse(result.begin(), result.end());    
     return result; 
 }
 
 BitString BitString::copy() {
     BitString res;
-    size_t a = _size - 1;
     for(size_t i = 0; i < _size; ++i) {
-        res.str[a] = str[i];
-        a--;
+        res.str[i] = str[i];
     }
     return res;
 }
 
 //операции сравнения
 
-bool BitString::larger(const BitString &other) {
-    return this-> change > other.change;
+std::string BitString::larger(const BitString &other) {
+    if(this -> change > other.change)
+        return "true" ;
+    else 
+        return "false";
 }
 
-bool BitString::smaller(const BitString &other) {
-    return this-> change < other.change;
+std::string BitString::smaller(const BitString &other) {
+    if(this -> change < other.change)
+        return "true" ;
+    else 
+        return "false";
 }
 
-bool BitString::equal(const BitString &other) {
-    return change == other.change;
+std::string BitString::equal(const BitString &other) {
+    if(this -> change == other.change)
+        return "true" ;
+    else 
+        return "false";
 }
 
 //операции со битовыми строками
 
 BitString BitString::_and(const BitString &other) {
-    BitString res_and;
     if(this-> _size != other._size) {
-        return BitString("строки имеют разную длину");
+        throw std::invalid_argument("Строки имеют разную длину");
     }
-
+    
+    BitString res_and(_size);
     for(int i = 0; i < _size; ++i) {
         if(str[i] == '1' and other.str[i] == '1')
             res_and.str[i] = '1';
@@ -170,14 +174,15 @@ BitString BitString::_and(const BitString &other) {
             res_and.str[i] = '0';
     }
     return res_and;
+    
 }
 
 BitString BitString::_or(const BitString &other) {
-    BitString res_or;
     if(this-> _size != other._size) {
-        return BitString("строки имеют разную длину");
+        throw std::invalid_argument("Строки имеют разную длину");
     }
 
+    BitString res_or(_size);
     for(int i = 0; i < _size; ++i) {
         if(str[i] == '0' and other.str[i] == '0')
             res_or.str[i] = '0';
@@ -188,11 +193,11 @@ BitString BitString::_or(const BitString &other) {
 }
 
 BitString BitString::_xor(const BitString &other) {
-    BitString res_xor;
     if(this-> _size != other._size) {
-        return BitString("строки имеют разную длину");
+        throw std::invalid_argument("Строки имеют разную длину");
     }
 
+    BitString res_xor(_size);
     for(int i = 0; i < _size; ++i) {
         if((str[i] == '0' and other.str[i] == '0') or (str[i] == '1' and other.str[i] == '1'))
             res_xor.str[i] = '0';
