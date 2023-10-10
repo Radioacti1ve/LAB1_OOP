@@ -53,24 +53,24 @@ TEST(test_1, Everything) {
     ASSERT_EQ(asize, checksize1);
     ASSERT_EQ(bsize, checksize2);
     for(size_t i = 0; i < asize; ++i) {
-        ASSERT_EQ(stra[i], checkstr1[i]);
+        ASSERT_EQ(checkstr1[i], stra[i]);
     }
 
     for(size_t i = 0; i < bsize; ++i) {
-        ASSERT_EQ(strb[i], checkstr2[i]);
+        ASSERT_EQ(checkstr2[i], strb[i]);
     }
 
-    ASSERT_EQ(sum, ans_sum);
-    ASSERT_EQ(minus, ans_minus);
+    ASSERT_EQ(ans_sum, sum);
+    ASSERT_EQ(ans_minus, minus);
     
-    ASSERT_EQ(larg, ans_larg);
-    ASSERT_EQ(smal, ans_smal);
-    ASSERT_EQ(eq, ans_eq);
+    ASSERT_EQ(ans_larg, larg);
+    ASSERT_EQ(ans_smal, smal);
+    ASSERT_EQ(ans_eq, eq);
 
-    ASSERT_EQ(tmp1, ans_and);
-    ASSERT_EQ(tmp2, ans_or);
-    ASSERT_EQ(tmp3, ans_xor);
-    ASSERT_EQ(tmp4, ans_not);
+    ASSERT_EQ(ans_and, tmp1);
+    ASSERT_EQ(ans_or, tmp2);
+    ASSERT_EQ(ans_xor, tmp3);
+    ASSERT_EQ(ans_not, tmp4);
 
 }
 
@@ -126,24 +126,24 @@ TEST(test_2, Everything) {
     ASSERT_EQ(asize, checksize1);
     ASSERT_EQ(bsize, checksize2);
     for(size_t i = 0; i < asize; ++i) {
-        ASSERT_EQ(stra[i], checkstr1[i]);
+        ASSERT_EQ(checkstr1[i], stra[i]);
     }
 
     for(size_t i = 0; i < bsize; ++i) {
-        ASSERT_EQ(strb[i], checkstr2[i]);
+        ASSERT_EQ(checkstr2[i], strb[i]);
     }
 
-    ASSERT_EQ(sum, ans_sum);
-    ASSERT_EQ(minus, ans_minus);
+    ASSERT_EQ(ans_sum, sum);
+    ASSERT_EQ(ans_minus, minus);
     
-    ASSERT_EQ(larg, ans_larg);
-    ASSERT_EQ(smal, ans_smal);
-    ASSERT_EQ(eq, ans_eq);
+    ASSERT_EQ(ans_larg, larg);
+    ASSERT_EQ(ans_smal, smal);
+    ASSERT_EQ(ans_eq, eq);
 
-    ASSERT_EQ(tmp1, ans_and);
-    ASSERT_EQ(tmp2, ans_or);
-    ASSERT_EQ(tmp3, ans_xor);
-    ASSERT_EQ(tmp4, ans_not);
+    ASSERT_EQ(ans_and, tmp1);
+    ASSERT_EQ(ans_or, tmp2);
+    ASSERT_EQ(ans_xor, tmp3);
+    ASSERT_EQ(ans_not, tmp4);
 
 }
 
@@ -199,24 +199,24 @@ TEST(test_3, Everything) {
     ASSERT_EQ(asize, checksize1);
     ASSERT_EQ(bsize, checksize2);
     for(size_t i = 0; i < asize; ++i) {
-        ASSERT_EQ(stra[i], checkstr1[i]);
+        ASSERT_EQ(checkstr1[i], stra[i]);
     }
 
     for(size_t i = 0; i < bsize; ++i) {
-        ASSERT_EQ(strb[i], checkstr2[i]);
+        ASSERT_EQ(checkstr2[i], strb[i]);
     }
 
-    ASSERT_EQ(sum, ans_sum);
-    ASSERT_EQ(minus, ans_minus);
+    ASSERT_EQ(ans_sum, sum);
+    ASSERT_EQ(ans_minus, minus);
     
-    ASSERT_EQ(larg, ans_larg);
-    ASSERT_EQ(smal, ans_smal);
-    ASSERT_EQ(eq, ans_eq);
+    ASSERT_EQ(ans_larg, larg);
+    ASSERT_EQ(ans_smal, smal);
+    ASSERT_EQ(ans_eq, eq);
 
-    ASSERT_EQ(tmp1, ans_and);
-    ASSERT_EQ(tmp2, ans_or);
-    ASSERT_EQ(tmp3, ans_xor);
-    ASSERT_EQ(tmp4, ans_not);
+    ASSERT_EQ(ans_and, tmp1);
+    ASSERT_EQ(ans_or, tmp2);
+    ASSERT_EQ(ans_xor, tmp3);
+    ASSERT_EQ(ans_not, tmp4);
 
 }
 
