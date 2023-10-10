@@ -4,13 +4,13 @@ project(OOP_LAB2)
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-set(CMAKE_CXX_STANDART 20)
-SET(CMAKE_CXX_STANDART_REQUIRED ON)
+SET(CMAKE_CXX_STANDARD 20)
+SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(main main.cpp BitString.h)
+add_executable(main main.cpp BitString.h BitString.cpp)
 
 enable_testing()
-add_executable(tests tests.cpp BitString.h)
+add_executable(tests tests.cpp BitString.h BitString.cpp)
 target_link_libraries(tests ${GTEST_LIBRARIES})
 
 add_test(NAME BASIC COMMAND tests)

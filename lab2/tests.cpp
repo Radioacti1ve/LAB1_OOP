@@ -68,9 +68,9 @@ TEST(test_1, Everything) {
     ASSERT_EQ(eq, ans_eq);
 
     ASSERT_EQ(tmp1, ans_and);
-    ASSERT_EQ(tmp2, ans_and);
-    ASSERT_EQ(tmp3, ans_and);
-    ASSERT_EQ(tmp4, ans_and);
+    ASSERT_EQ(tmp2, ans_or);
+    ASSERT_EQ(tmp3, ans_xor);
+    ASSERT_EQ(tmp4, ans_not);
 
 }
 
@@ -141,9 +141,9 @@ TEST(test_2, Everything) {
     ASSERT_EQ(eq, ans_eq);
 
     ASSERT_EQ(tmp1, ans_and);
-    ASSERT_EQ(tmp2, ans_and);
-    ASSERT_EQ(tmp3, ans_and);
-    ASSERT_EQ(tmp4, ans_and);
+    ASSERT_EQ(tmp2, ans_or);
+    ASSERT_EQ(tmp3, ans_xor);
+    ASSERT_EQ(tmp4, ans_not);
 
 }
 
@@ -214,9 +214,9 @@ TEST(test_3, Everything) {
     ASSERT_EQ(eq, ans_eq);
 
     ASSERT_EQ(tmp1, ans_and);
-    ASSERT_EQ(tmp2, ans_and);
-    ASSERT_EQ(tmp3, ans_and);
-    ASSERT_EQ(tmp4, ans_and);
+    ASSERT_EQ(tmp2, ans_or);
+    ASSERT_EQ(tmp3, ans_xor);
+    ASSERT_EQ(tmp4, ans_not);
 
 }
 
