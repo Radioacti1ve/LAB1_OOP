@@ -14,7 +14,8 @@ TEST(test_1, Everything) {
     //строки?..
     unsigned char* stra = a.GetStr();
     unsigned char* strb = b.GetStr();
-    unsigned char checkstr1[] = {'1','0','1','1'}, checkstr2[] = {'1','0','0','1'};
+    unsigned char checkstr1[] = {'1','0','1','1'};
+    unsigned char checkstr2[] = {'1','0','0','1'};
 
     //перевод в 10-ую систему счисления
     int achange = a.change_10();
@@ -50,8 +51,8 @@ TEST(test_1, Everything) {
    std::string ans_not = "0100";
 
     //проверка
-    ASSERT_EQ(asize, checksize1);
-    ASSERT_EQ(bsize, checksize2);
+    ASSERT_EQ(checksize1, asize);
+    ASSERT_EQ(checksize2, bsize);
     for(size_t i = 0; i < asize; ++i) {
         ASSERT_EQ(checkstr1[i], stra[i]);
     }
@@ -123,8 +124,8 @@ TEST(test_2, Everything) {
    std::string ans_not = "0101100";
 
     //проверка
-    ASSERT_EQ(asize, checksize1);
-    ASSERT_EQ(bsize, checksize2);
+    ASSERT_EQ(checksize1, asize);
+    ASSERT_EQ(checksize2, bsize);
     for(size_t i = 0; i < asize; ++i) {
         ASSERT_EQ(checkstr1[i], stra[i]);
     }
@@ -160,7 +161,7 @@ TEST(test_3, Everything) {
     //строки?..
     unsigned char* stra = a.GetStr();
     unsigned char* strb = b.GetStr();
-    unsigned char checkstr1[] = {'1','0','1'}, checkstr2[] = {'1','0','1'};
+    unsigned char checkstr1[] = {'1','0','0'}, checkstr2[] = {'1','0','1'};
 
     //перевод в 10-ую систему счисления
     int achange = a.change_10();
@@ -196,8 +197,8 @@ TEST(test_3, Everything) {
    std::string ans_not = "011";
 
     //проверка
-    ASSERT_EQ(asize, checksize1);
-    ASSERT_EQ(bsize, checksize2);
+    ASSERT_EQ(checksize1, asize);
+    ASSERT_EQ(checksize2, bsize);
     for(size_t i = 0; i < asize; ++i) {
         ASSERT_EQ(checkstr1[i], stra[i]);
     }
@@ -225,7 +226,7 @@ TEST(test_4, InvalidArgument) {
 }
 
 TEST(test_5, InvalidArgument) {
-    ASSERT_THROW(BitString("kak je ya ustal uje"), std::invalid_argument);
+    ASSERT_THROW(BitString("kak je ya ustal uje google testi ne pashut pochemu.........  ;((("), std::invalid_argument);
 }
 
 TEST(test_6, InvalidArgument) {
