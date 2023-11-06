@@ -19,14 +19,9 @@ Array::Array(int size) {
 }
 
 Array::~Array() {
-    for(int i = 0; i < _size; ++i) {
-        if(_figures[i] != nullptr) {
-            delete _figures[i];
-        }
-    }
+    _size = 0;
     delete[] _figures;
     _figures = nullptr;
-    _size = 0;
 }
 
 Figure *Array::operator[](int index) const{
@@ -45,7 +40,7 @@ void Array::del(int index) {
     _figures[index] = nullptr;
 }
 
-void Array::change(Figure *fig, int index) {
+void Array::add(Figure *fig, int index) {
     if(index >= _size) {
         throw std::invalid_argument("Index >= size");
     }
@@ -62,6 +57,7 @@ double Array::Area() {
             result += (double)*_figures[i];
         }
     }
+    return result;
 }
 
 

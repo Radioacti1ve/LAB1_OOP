@@ -45,7 +45,7 @@ private:
 
 inline std::istream &operator>>(std::istream &is, Hexa &obj) {
     double x, y;
-    std::vector<double> coor_x(5), coor_y(5);
+    std::vector<double> coor_x(6), coor_y(6);
     for(int i = 0; i < 6; ++i) {
         std::cout << "Input the coordinates of point " << i + 1 << ":\n x: ";
         is >> x;

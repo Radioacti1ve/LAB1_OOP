@@ -13,7 +13,9 @@ public:
     void add(Figure *fig, int index);
     void del(int index);
     Figure *operator[](int index) const;
-    void change(Figure *fig, int index);
     double Area();
+    int Get_Size() {
+        return _size;
+    }
 };
 
