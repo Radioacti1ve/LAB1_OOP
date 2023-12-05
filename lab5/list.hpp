@@ -144,8 +144,9 @@ public:
         if(head == nullptr) {
             head = tail = lnode;
         } else {
+            lnode->prev = nullptr;
             lnode->next = head;
-            lnode->prev = lnode;
+            head->prev = lnode;
             head = lnode;
         }
         ++size;
@@ -190,6 +191,7 @@ public:
     void add(const T& a, size_t index) {
         if(index > size) {
             std::cout << "index > size: use a smaller index!\n";
+            return;
         }
         if(index == 0) {
             front_push(a);

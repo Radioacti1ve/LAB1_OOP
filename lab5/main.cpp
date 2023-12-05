@@ -44,7 +44,7 @@ void print(const List<int, Allocator<int, 10>>& strochenka) {
     for(List<int, Allocator<int, 10>>::Iterator iter = list.begin(); iter != list.end(); ++iter) {
         std::cout << *iter << "    ";
     }
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
 }
 int main(int argc, char const *argv[])
 {
@@ -73,7 +73,7 @@ int main(int argc, char const *argv[])
     print(my_list);
     my_list.add(2, 15);
     print(my_list);
-    my_list.cut(2);
+    my_list.cut(1);
     print(my_list);
     return 0;
 }

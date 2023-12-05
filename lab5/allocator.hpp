@@ -2,7 +2,7 @@
 #include <iostream>
 #include <list>
 
-template<class T, int Size = 100>
+template<class T, size_t Size>
 class Allocator {
 private:
     std::list<T> mem;
@@ -17,31 +17,25 @@ public:
         mem.resize(Size);
         Pos = mem.begin();
     }
-    ~Allocator() {
-        while(!mem.empty()) {
-            mem.pop_back();
-        }
-    }
+    ~Allocator() {}
 
     int get_size() {
         return Size;
     }
 
     template<class A>
-    struct reassignment {
+    struct rebind {
         using other = Allocator<A, Size>;
     };
     T* allocate(int n) {
         if(std::distance(Pos, mem.end()) >= n) {
             T* pointer = &(*Pos);
             std::advance(Pos, n);
-            return pointer;
+            return &(*pointer);
         }
         return nullptr;
     }
-    void deallocate(T* pointer, int) {
-        Pos = mem.begin();
-    }
+    void deallocate(T* pointer, size_t n) {}
 
     template<typename A, typename... Args>
     void construct(A* p, Args &&...args) {
