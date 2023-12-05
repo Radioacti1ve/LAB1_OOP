@@ -216,6 +216,7 @@ public:
     void cut(size_t index) {
     if (index >= size) {
         std::cout << "Index > size: use a smaller index;\n";
+        return;
     } else if (index == size - 1) {
         pop_back();
     } else {
@@ -223,11 +224,15 @@ public:
         for (size_t i = 0; i < index; ++i) {
             cur = cur->next;
         }
-        Node* del_node = cur;
-        cur->prev->next = cur->next;
-        cur->next->prev = cur->prev;
-        Alloc_Ntraits::destroy(n_alloc, del_node);
-        Alloc_Ntraits::deallocate(n_alloc, del_node, 1);
+        if (cur->prev) {
+            cur->prev->next = cur->next;
+        }
+
+        if (cur->next) {
+            cur->next->prev = cur->prev;
+        }
+        Alloc_Ntraits::destroy(n_alloc, cur);
+        Alloc_Ntraits::deallocate(n_alloc, cur, 1);
         --size;
     }
 }
